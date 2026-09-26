@@ -1,0 +1,112 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "haru.moc3",
+		"Textures": [
+			"haru.1024/texture_00.png",
+			"haru.1024/texture_01.png",
+			"haru.1024/texture_02.png"
+		],
+		"Physics": "haru.physics3.json",
+		"Pose": "haru.pose3.json",
+		"DisplayInfo": "haru.cdi3.json",
+		"Motions": {
+			"Idle": [],
+			"TapBody": [
+				{
+					"File": "motion/微笑-向右指引.motion3.json"
+				},
+				{
+					"File": "motion/微笑-肯定点头.motion3.json"
+				},
+				{
+					"File": "motion/微笑-向右指引.motion3.json"
+				},
+				{
+					"File": "motion/微笑-肯定点头.motion3.json"
+				},
+				{
+					"File": "motion/冷漠-看着你.motion3.json"
+				},
+				{
+					"File": "motion/否定-闭眼摇头.motion3.json"
+				},
+				{
+					"File": "motion/开心-手放下眯眼笑说话.motion3.json"
+				},
+				{
+					"File": "motion/开心-眯眼笑.motion3.json"
+				},
+				{
+					"File": "motion/开心-眯眼笑手放胸前.motion3.json"
+				},
+				{
+					"File": "motion/开心-眯眼笑点头.motion3.json"
+				},
+				{
+					"File": "motion/开心-眯眼笑着说话.motion3.json"
+				},
+				{
+					"File": "motion/开心-眯眼笑说话.motion3.json"
+				},
+				{
+					"File": "motion/开心-笑着说话.motion3.json"
+				},
+				{
+					"File": "motion/微笑-看着你.motion3.json"
+				},
+				{
+					"File": "motion/惊吓-手摆开.motion3.json"
+				},
+				{
+					"File": "motion/惊喜-转开心说话.motion3.json"
+				},
+				{
+					"File": "motion/激动-左右摇晃说话.motion3.json"
+				},
+				{
+					"File": "motion/生气-双手叉腰.motion3.json"
+				},
+				{
+					"File": "motion/生气-双手叉腰看着你.motion3.json"
+				},
+				{
+					"File": "motion/疑惑-手放下巴.motion3.json"
+				},
+				{
+					"File": "motion/疑惑-手放嘴角说话.motion3.json"
+				},
+				{
+					"File": "motion/疑惑-转微笑说话.motion3.json"
+				},
+				{
+					"File": "motion/疑惑-难过看着你.motion3.json"
+				},
+				{
+					"File": "motion/脸红-手放嘴角说话.motion3.json"
+				},
+				{
+					"File": "motion/脸红-疑惑说话.motion3.json"
+				}
+			]
+		}
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": [
+				"ParamEyeLOpen",
+				"ParamEyeROpen"
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": [
+				"ParamMouthOpenY"
+			]
+		}
+	],
+	"HitAreas": []
+}
