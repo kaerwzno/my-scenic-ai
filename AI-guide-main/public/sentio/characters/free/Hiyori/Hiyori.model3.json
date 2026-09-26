@@ -1,0 +1,79 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "Hiyori.moc3",
+		"Textures": [
+			"Hiyori.2048/texture_00.png",
+			"Hiyori.2048/texture_01.png"
+		],
+		"Physics": "Hiyori.physics3.json",
+		"Pose": "Hiyori.pose3.json",
+		"UserData": "Hiyori.userdata3.json",
+		"DisplayInfo": "Hiyori.cdi3.json",
+		"Motions": {
+			"Idle": [
+				{
+					"File": "motions/微笑-看着你.motion3.json",
+					"FadeInTime": 0.5,
+					"FadeOutTime": 0.5
+				}
+			],
+			"TapBody": [
+				{
+					"File": "motions/难过-皱眉.motion3.json",
+					"FadeInTime": 0.5,
+					"FadeOutTime": 0.5
+				},
+				{
+					"File": "motions/无聊-抬头望天摇摆.motion3.json",
+					"FadeInTime": 0.5,
+					"FadeOutTime": 0.5
+				},
+				{
+					"File": "motions/伤心-低头.motion3.json"
+				},
+				{
+					"File": "motions/开心-张嘴笑.motion3.json"
+				},
+				{
+					"File": "motions/开心-眯眼笑.motion3.json"
+				},
+				{
+					"File": "motions/惊吓-转生气.motion3.json"
+				},
+				{
+					"File": "motions/惊讶-张嘴.motion3.json"
+				},
+				{
+					"File": "motions/撒娇-摆手.motion3.json"
+				},
+				{
+					"File": "motions/疑惑-脸红转开心.motion3.json"
+				}
+			]
+		}
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": [
+				"ParamEyeLOpen",
+				"ParamEyeROpen"
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": [
+				"ParamMouthOpenY"
+			]
+		}
+	],
+	"HitAreas": [
+		{
+			"Id": "HitArea",
+			"Name": "Body"
+		}
+	]
+}
