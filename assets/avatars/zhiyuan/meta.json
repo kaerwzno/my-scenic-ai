@@ -1,0 +1,31 @@
+{
+  "id": "zhiyuan",
+  "name": "智远",
+  "tagline": "儒雅的讲解员，讲得深、讲得慢",
+  "scenic": "lingshan",
+  "voice_hint": "沉稳的中年男声",
+  "placeholder": true,
+  "generated_at": "2026-09-25 21:23:37",
+  "model": "wan2.2-t2i-flash",
+  "size": "1024*1024",
+  "prompt": "一位四十岁上下的中国男性讲解员，神态温和从容，短发整齐，蓄短须，戴一副细框圆眼镜，穿深青色立领长衫，外罩灰蓝色棉麻外褂，气质儒雅，像一位学问扎实又耐心的老师，正面半身像，面朝镜头，面部位于画面中央偏上，肩膀入画，纯色渐变背景，柔和均匀的光线，画面干净，中国古风动漫插画风格，线条清晰，色彩雅致，不要文字，不要水印，不要多人，不要侧脸，不要夸张表情",
+  "source_url": "https://dashscope-5859.oss-cn-wulanchabu-acdr-1.aliyuncs.com/1d/6e/20260925/6514ac22/3d16ddd3-b486-4f79-b02c-8dc87a15b011926287398.png?Expires=1790429012&OSSAccessKeyId=LTAI5tPxpiCM2hjmWrFXrym1&Signature=lxNHyLTemSIRmRr7l30qcZo8EHE%3D",
+  "anchors": {
+    "face": {
+      "x": 0.496,
+      "y": 0.34600000000000003
+    },
+    "mouth": {
+      "x": 0.496,
+      "y": 0.406
+    },
+    "eyes": {
+      "x": 0.496,
+      "y": 0.31600000000000006,
+      "gap": 0.1
+    },
+    "face_height": 0.33
+  },
+  "render_hint": "占位阶段：立绘 + 程序化嘴型（按包络画椭圆），不需要分层素材",
+  "anchors_calibrated_at": "2026-09-25 22:21:42"
+}

@@ -1,0 +1,29 @@
+{
+    "7": {
+        "lingshan_query": {
+            "params": {
+                "query": "{{question}}"
+            },
+            "include_history": true,
+            "allow_function_call": false
+        }
+    },
+    "8": {
+        "nianhuawan_query": {
+            "params": {
+                "query": "{{question}}"
+            },
+            "include_history": true,
+            "allow_function_call": false
+        }
+    },
+    "9": {
+        "graph_query": {
+            "params": {
+                "question": "{{question}}"
+            },
+            "include_history": true,
+            "allow_function_call": false
+        }
+    }
+}

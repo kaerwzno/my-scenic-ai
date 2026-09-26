@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fay数字人</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}?v={{ cache_bust }}" />
+    <link rel="icon" href="{{ url_for('static',filename='images/favicon.ico') }}" type="image/x-icon">
+    <script src="{{ url_for('static',filename='js/vue.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/element-ui.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/element/theme-chalk.css') }}" />
+    <script>
+      // Older embedded browsers/WebViews may miss `.at()`, but marked v15 uses it.
+      (function () {
+        function atPolyfill(index) {
+          var length = this.length >>> 0;
+          var relativeIndex = Number(index) || 0;
+          if (relativeIndex < 0) {
+            relativeIndex += length;
+          }
+          if (relativeIndex < 0 || relativeIndex >= length) {
+            return undefined;
+          }
+          return this[relativeIndex];
+        }
+
+        if (!Array.prototype.at) {
+          Object.defineProperty(Array.prototype, 'at', {
+            value: atPolyfill,
+            writable: true,
+            configurable: true
+          });
+        }
+
+        if (!String.prototype.at) {
+          Object.defineProperty(String.prototype, 'at', {
+            value: atPolyfill,
+            writable: true,
+            configurable: true
+          });
+        }
+      })();
+    </script>
+    <script src="{{ url_for('static',filename='js/marked.min.js') }}?v={{ cache_bust }}"></script>
+    <script src="{{ url_for('static',filename='js/html2canvas.min.js') }}?v={{ cache_bust }}"></script>
+    <script src="{{ url_for('static',filename='js/index.js') }}?v={{ cache_bust }}" defer></script>
+    <script src="{{ url_for('static',filename='js/script.js') }}?v={{ cache_bust }}" defer></script>
+  </head>
+  <body>
+    <div id="app" class="main_bg">
+      <div class="main_left">
+        <div class="main_left_logo" style="position: relative;">
+          <div class="status-indicators">
+            <div class="status-dot" :class="{ 'connected': systemStatus.server }" title="服务器"></div>
+            <div class="status-dot" :class="{ 'connected': systemStatus.digital_human }" title="数字人"></div>
+            <div class="status-dot" :class="{ 'connected': systemStatus.remote_audio }" title="远程音频"></div>
+          </div>
+          <img src="{{ url_for('static',filename='images/Logo.png') }}" alt="">
+        </div>
+
+        <div class="main_left_menu">
+          <ul>
+            <li class="changeImg"><a href="/"><span class="iconimg1">消息</span></a></li>
+            <li class="changeImg2"><a href="/setting"><span class="iconimg2">人设</span></a></li>
+            <li class="changeImg3" :class="{'mcp-online': mcpOnlineStatus}"><a :href="'http://' + hostname + ':5010/Page3'"><span class="iconimg3"><span class="mcp-online-indicator"></span>MCP</span></a></li>
+          </ul>
+        </div>
+        
+        <div class="main_left_emoji">
+          <img style="padding-top: 60px; max-width: 140px;" :src="robot" alt="">
+        </div>
+      </div>
+
+      <div class="main_right">
+        <div class="top_info">
+          <span class="top_info_text">消息：</span>[[panelMsg]]
+          <span v-if="!shareSelectMode && messages.length > 0" class="share-entry-btn" @click="enterShareSelectMode" title="多选生成分享图">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          </span>
+        </div>
+
+        <!-- 多选操作栏 -->
+        <div class="share-toolbar" v-if="shareSelectMode">
+          <span class="share-toolbar-info">已选 [[shareSelectedCount]] 条消息</span>
+          <el-button size="mini" @click="shareSelectAll">全选</el-button>
+          <el-button size="mini" @click="shareDeselectAll">取消全选</el-button>
+          <el-button size="mini" type="primary" :disabled="shareSelectedCount === 0" @click="generateShareImage">生成分享图</el-button>
+          <el-button size="mini" @click="exitShareSelectMode">退出</el-button>
+        </div>
+
+        <div class="chatmessage-wrapper">
+          <div class="chatmessage" :class="{'chatmessage-select-mode': shareSelectMode, 'chatmessage-panel-open': execPanelOpen}">
+            <div class="chat-container" id="user0">
+              <!-- 加载更多提示 -->
+              <div v-if="loadingMoreMessages" class="loading-more">
+                <span class="loading-spinner"></span>
+                <span>加载中...</span>
+              </div>
+              <div v-else-if="hasMoreMessages" class="load-more-hint">
+                ↑ 上拉加载更多历史消息
+              </div>
+              <div v-else-if="messages.length > 0" class="no-more-messages">
+                — 没有更多消息了 —
+              </div>
+              <div v-for="(item, index) in messages" :key="index" class="message-row" :class="{'message-row-selected': item.shareSelected}" @click="shareSelectMode && toggleShareSelect(index)">
+                <div v-if="shareSelectMode" class="share-checkbox">
+                  <span :class="item.shareSelected ? 'share-cb-checked' : 'share-cb-unchecked'"></span>
+                </div>
+                <div class="message receiver-message" v-if="item.type == 'fay'" style="flex:1;min-width:0;">
+                  <img class="avatar" src="{{ url_for('static',filename='images/Fay_send.png') }}" alt="接收者头像">
+                  <div class="message-content">
+                    <div class="message-bubble">
+                      <div v-if="parseThinkContent(item.content).thinkContent || item.thinkLoading" class="think-toggle" @click.stop="toggleThink(index)">
+                        <span class="think-arrow" :class="{'expanded': item.thinkExpanded}">▶</span>
+                        <span class="think-label">思考过程</span>
+                        <span v-if="item.thinkLoading" class="think-spinner"></span>
+                      </div>
+<div v-if="(parseThinkContent(item.content).thinkContent || item.thinkLoading) && item.thinkExpanded" class="think-content-inline">[[parseThinkContent(item.content).thinkContent]]</div>
+                      <div class="message-text markdown-body" v-html="renderMarkdown(parseThinkContent(item.content).mainContent)"></div>
+                      <div v-if="parseThinkContent(item.content).prestartContent" class="prestart-toggle" @click.stop="togglePrestart(index)">
+                        <span class="prestart-arrow" :class="{'expanded': item.prestartExpanded}">▶</span>
+                        <span class="prestart-label">预启动工具</span>
+                      </div>
+                      <div v-if="parseThinkContent(item.content).prestartContent && item.prestartExpanded" class="prestart-content-inline" v-html="convertImagePaths(parseThinkContent(item.content).prestartContent)"></div>
+                    </div>
+                    <div class="message-time">
+                      <span class="what-time">[[item.timetext]]</span>
+                      <div v-if="item.is_adopted == 0" class="adopt-button" @click.stop="adoptText(item.id)">
+                        <img src="{{ url_for('static',filename='images/adopt.png') }}" alt="采纳图标" class="adopt-img" />
+                      </div>
+                      <div v-else class="adopt-button" @click.stop="unadoptText(item.id)">
+                        <img src="{{ url_for('static',filename='images/adopted.png') }}" alt="已采纳图标" class="adopt-img" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="message sender-message" v-else style="flex:1;min-width:0;">
+                  <div class="message-content">
+                    <div class="sender-message message-bubble">[[item.content]]</div>
+                    <div class="sender-message-time">[[item.timetext]]</div>
+                  </div>
+                  <img class="avatar" src="{{ url_for('static',filename='images/User_send.png') }}" alt="发送者头像">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 后台任务侧边栏 -->
+          <div class="exec-panel" :class="{'exec-panel-open': execPanelOpen}">
+            <div class="exec-panel-tab" @click="toggleExecPanel" :class="{'exec-tab-active': execStatus.status === 'running'}">
+              <span class="exec-tab-icon">&#9881;</span>
+              <span v-if="execStatus.status === 'running'" class="exec-tab-dot"></span>
+            </div>
+            <div class="exec-panel-body" v-show="execPanelOpen">
+              <div class="exec-panel-header">
+                <span class="exec-panel-title">后台任务</span>
+                <span class="exec-panel-close" @click="execPanelOpen = false">&times;</span>
+              </div>
+              <div v-if="execStatus.status === 'idle'" class="exec-panel-empty">
+                暂无后台任务
+              </div>
+              <div v-else class="exec-panel-content">
+                <div class="exec-status-badge" :class="'exec-status-' + execStatus.status">
+                  [[ execStatusLabel ]]
+                </div>
+                <div class="exec-detail-row">
+                  <span class="exec-detail-label">请求</span>
+                  <span class="exec-detail-value">[[ execStatus.original_request ]]</span>
+                </div>
+                <div class="exec-detail-row">
+                  <span class="exec-detail-label">进度</span>
+                  <span class="exec-detail-value">[[ execStatus.current_step || '-' ]]</span>
+                </div>
+                <div class="exec-detail-row">
+                  <span class="exec-detail-label">已完成</span>
+                  <span class="exec-detail-value">[[ execStatus.steps_done ]] 步 / [[ execStatus.elapsed ]]s</span>
+                </div>
+                <div v-if="execStatus.error" class="exec-detail-row exec-error-row">
+                  <span class="exec-detail-label">错误</span>
+                  <span class="exec-detail-value">[[ execStatus.error ]]</span>
+                </div>
+                <div v-if="execStatus.progress_messages && execStatus.progress_messages.length" class="exec-log-section">
+                  <div class="exec-log-title">执行日志</div>
+                  <div class="exec-log-list">
+                    <div v-for="(log, i) in execStatus.progress_messages" :key="i" class="exec-log-item">[[ log ]]</div>
+                  </div>
+                </div>
+                <div v-if="execStatus.status === 'running'" class="exec-panel-actions">
+                  <button class="exec-btn exec-btn-cancel" @click="cancelExecution">取消任务</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 分享图预览弹窗 -->
+        <el-dialog title="分享图预览" :visible.sync="sharePreviewVisible" width="560px" top="3vh" :close-on-click-modal="false">
+          <div style="max-height:75vh;overflow-y:auto;">
+            <div id="sharePreviewContainer" class="share-preview-card">
+              <div class="share-preview-header">Fay 开源数字人</div>
+              <div v-for="(item, idx) in shareSelectedMessages" :key="idx" class="share-preview-msg">
+                <div v-if="item.type === 'fay'" class="share-preview-fay">
+                  <div class="share-preview-name">Fay</div>
+                  <div class="share-preview-bubble share-preview-bubble-fay markdown-body" v-html="renderMarkdown(parseThinkContent(item.content).mainContent)"></div>
+                  <div class="share-preview-time">[[item.timetext]]</div>
+                </div>
+                <div v-else class="share-preview-user">
+                  <div class="share-preview-name" style="text-align:right;">[[selectedUser ? selectedUser[1] : '用户']]</div>
+                  <div class="share-preview-bubble share-preview-bubble-user">[[item.content]]</div>
+                  <div class="share-preview-time" style="text-align:right;">[[item.timetext]]</div>
+                </div>
+              </div>
+              <div class="share-preview-footer">
+                github.com/xszyou/fay &nbsp;|&nbsp; gitee.com/xszyou/fay &nbsp;|&nbsp; 公众号: fay数字人
+              </div>
+            </div>
+          </div>
+          <span slot="footer" class="dialog-footer">
+            <el-button size="small" @click="sharePreviewVisible = false">关闭</el-button>
+            <el-button size="small" type="primary" @click="downloadShareImage">保存图片</el-button>
+          </span>
+        </el-dialog>
+
+        <div class="inputmessage">
+          <div class="inputmessage_voice">
+            <img v-if="!source_record_enabled" src="{{ url_for('static',filename='images/recording.png') }}" alt="" @click="changeRecord()">
+            <img v-else src="{{ url_for('static',filename='images/record.png') }}" alt="" @click="changeRecord()">
+          </div>
+          <div class="inputmessage_input">
+            <textarea class="text_in" placeholder="请输入内容" v-model="newMessage" @keydown.enter.exact.prevent="sendMessage" style="padding-top: 13px;"></textarea>
+          </div>
+          <div class="inputmessage_send">
+            <img src="{{ url_for('static',filename='images/send.png') }}" alt="发送信息" @click="sendMessage">
+          </div>
+          <div v-if="liveState == 1" class="inputmessage_open">
+            <img v-if="!play_sound_enabled" src="{{ url_for('static',filename='images/sound_off.png') }}" @click="changeSound()">
+            <img v-else src="{{ url_for('static',filename='images/sound_on.png') }}" @click="changeSound()">
+          </div>
+          <div v-else class="inputmessage_open">
+            <img src="{{ url_for('static',filename='images/open.png') }}" @click="startLive()">
+          </div>
+        </div>
+
+        <div class="Userchange">
+          <button id="prevButton">
+            <img src="{{ url_for('static',filename='images/scrollleft.png') }}" alt="向左滑动">
+          </button>
+          <div class="menu" ref="menuContainer">
+            <div class="tag" v-for="user in userList" :key="user[0]" :class="{'selected': selectedUser && selectedUser[0] === user[0]}" @click="selectUser(user)" @mouseenter="showDeleteBtn(user)" @mouseleave="hideDeleteBtn(user)">
+              [[ user[1] === 'User' ? '主人' : user[1] ]]
+              <span v-if="user[1] !== 'User' && user.showDelete" class="user-delete-btn" @click.stop="confirmDeleteUser(user)" title="删除用户">&times;</span>
+            </div>
+          </div>
+          <button id="nextButton">
+            <img src="{{ url_for('static',filename='images/scrollright.png') }}" alt="向右滑动">
+          </button>
+          <button class="add-user-btn" @click="showAddUserDialog" title="添加用户">+</button>
+        </div>
+      </div>
+
+      <!-- 添加用户对话框 -->
+      <el-dialog title="添加新用户" :visible.sync="addUserDialogVisible" width="350px" :close-on-click-modal="false">
+        <el-input v-model="newUsername" placeholder="请输入用户名" @keyup.enter.native="addUser" maxlength="20" show-word-limit></el-input>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="addUserDialogVisible = false">取消</el-button>
+          <el-button type="primary" @click="addUser">添加</el-button>
+        </span>
+      </el-dialog>
+
+      <!-- 用户信息编辑对话框 -->
+      <el-dialog :title="'编辑用户信息 - ' + (editingUserForExtraInfo ? (editingUserForExtraInfo[1] === 'User' ? '主人' : editingUserForExtraInfo[1]) : '')" :visible.sync="extraInfoDialogVisible" width="600px" :close-on-click-modal="false">
+        <div style="margin-bottom: 15px;">
+          <div style="font-weight: bold; margin-bottom: 8px; color: #606266;">用户补充信息</div>
+          <el-input type="textarea" v-model="editingExtraInfo" placeholder="请输入用户补充信息，例如：喜好、特征、注意事项等" :rows="4" maxlength="500" show-word-limit></el-input>
+          <div style="margin-top: 5px; color: #909399; font-size: 12px;">此信息会附加到对话提示词中，帮助AI更好地了解该用户</div>
+        </div>
+        <div>
+          <div style="font-weight: bold; margin-bottom: 8px; color: #606266;">用户画像 <span style="font-weight: normal; color: #909399; font-size: 12px;">(每晚22:35自动分析更新)</span></div>
+          <el-input type="textarea" v-model="editingUserPortrait" placeholder="用户画像由系统根据对话内容自动分析生成，也可手动编辑" :rows="6" maxlength="1000" show-word-limit></el-input>
+        </div>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="extraInfoDialogVisible = false">取消</el-button>
+          <el-button type="primary" @click="saveUserInfo">保存</el-button>
+        </span>
+      </el-dialog>
+
+      <!-- 固定在右侧的 think 信息面板 -->
+      <div class="think-panel-container" v-show="thinkContent">
+        <div class="think-panel">
+          <div class="think-panel-header">
+            <h4>思考内容</h4>
+            <button class="think-panel-minimize" @click="minimizeThinkPanel">
+              <span class="think-panel-icon" v-if="isThinkPanelMinimized">+</span>
+              <span class="think-panel-icon" v-else>-</span>
+            </button>
+          </div>
+          <p>[[thinkContent]]</p>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // 初始化 thinkContent
+        if (typeof app !== 'undefined') {
+          app.thinkContent = "";
+        }
+      });
+    </script>
+  </body>
+</html>

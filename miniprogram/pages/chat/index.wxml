@@ -1,0 +1,35 @@
+<view class="page">
+  <view class="stage">
+    <canvas type="2d" id="stage" class="canvas"></canvas>
+    <view class="who">
+      <text class="who-name">{{avatarName}}</text>
+      <text class="who-state">{{speaking ? '正在说…' : '在听你说'}}</text>
+    </view>
+  </view>
+
+  <view class="tools">
+    <view class="tool" bindtap="onDemoMouth">试一下口型</view>
+    <view class="tool" bindtap="goAvatar">换个形象</view>
+  </view>
+
+  <scroll-view class="msgs" scroll-y scroll-top="{{scrollTop}}" scroll-with-animation>
+    <view wx:for="{{messages}}" wx:key="key" class="row {{item.role}}">
+      <view class="bubble">{{item.content}}</view>
+    </view>
+    <view wx:if="{{thinking}}" class="row assistant">
+      <view class="bubble dim">正在想…</view>
+    </view>
+    <view class="pad"></view>
+  </scroll-view>
+
+  <view class="bar">
+    <input
+      class="input"
+      value="{{draft}}"
+      placeholder="跟它说点什么…"
+      confirm-type="send"
+      bindinput="onInput"
+      bindconfirm="onSend" />
+    <view class="send {{sending ? 'disabled' : ''}}" bindtap="onSend">发送</view>
+  </view>
+</view>

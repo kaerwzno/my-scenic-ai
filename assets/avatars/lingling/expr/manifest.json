@@ -1,0 +1,49 @@
+{
+  "avatar": "lingling",
+  "model": "qwen-image-edit-plus",
+  "generated_at": "2026-09-25 22:06:52",
+  "expressions": [
+    {
+      "key": "neutral",
+      "cn": "平静",
+      "file": "neutral.png",
+      "size_kb": 1077
+    },
+    {
+      "key": "smile",
+      "cn": "微笑",
+      "file": "smile.png",
+      "size_kb": 1085
+    },
+    {
+      "key": "warm",
+      "cn": "亲切",
+      "file": "warm.png",
+      "size_kb": 1084
+    },
+    {
+      "key": "serious",
+      "cn": "认真",
+      "file": "serious.png",
+      "size_kb": 1084
+    },
+    {
+      "key": "curious",
+      "cn": "好奇",
+      "file": "curious.png",
+      "size_kb": 1084
+    },
+    {
+      "key": "think",
+      "cn": "思考",
+      "file": "think.png",
+      "size_kb": 1085
+    },
+    {
+      "key": "concern",
+      "cn": "关切",
+      "file": "concern.png",
+      "size_kb": 1083
+    }
+  ]
+}

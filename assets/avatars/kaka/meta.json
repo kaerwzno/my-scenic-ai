@@ -1,0 +1,32 @@
+{
+  "id": "kaka",
+  "name": "卡卡",
+  "tagline": "Q 版卡通小伙伴，适合孩子和想安静的人",
+  "scenic": "lingshan",
+  "voice_hint": "软糯、语速慢的童声",
+  "placeholder": true,
+  "generated_at": "2026-09-25 21:26:20",
+  "model": "wan2.2-t2i-flash",
+  "size": "1024*1024",
+  "prompt": "一个圆脑袋的 Q 版卡通小和尚形象，二头身，圆圆的脸蛋，弯弯的眯眯眼，小小的嘴巴，脸颊有淡粉色腮红，光头，穿浅杏色小僧袍，脖子上一串木珠，圆手圆脚，姿态安静，憨厚可爱，表情温和不夸张，Q 版卡通风格，二头身大头娃娃比例，圆润的造型，简洁的五官，柔和的马卡龙配色，粗描边，扁平化上色，正面半身像，面朝镜头，面部位于画面中央偏上，肩膀入画，纯色渐变背景，柔和均匀的光线，画面干净，不要文字，不要水印，不要多人，不要侧脸，不要夸张表情",
+  "source_url": "https://dashscope-5859.oss-cn-wulanchabu-acdr-1.aliyuncs.com/1d/c7/20260925/6514ac22/d8c625e5-6497-43f4-a2e8-b9e67d07b566883313424.png?Expires=1790429173&OSSAccessKeyId=LTAI5tPxpiCM2hjmWrFXrym1&Signature=sVVoStbp2LhdF0prLpmjD3Ir%2BSE%3D",
+  "anchors": {
+    "face": {
+      "x": 0.536,
+      "y": 0.326
+    },
+    "mouth": {
+      "x": 0.536,
+      "y": 0.386
+    },
+    "eyes": {
+      "x": 0.536,
+      "y": 0.29600000000000004,
+      "gap": 0.1
+    },
+    "face_height": 0.34
+  },
+  "style": "Q 版卡通风格，二头身大头娃娃比例，圆润的造型，简洁的五官，柔和的马卡龙配色，粗描边，扁平化上色",
+  "render_hint": "占位阶段：立绘 + 程序化嘴型（按包络画椭圆），不需要分层素材",
+  "anchors_calibrated_at": "2026-09-25 22:46:52"
+}

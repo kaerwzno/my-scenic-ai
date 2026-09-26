@@ -1,0 +1,65 @@
+
+[key]
+#funasr / ali / sensevoice
+#建议使用funasr,请依照asr/funasr/README>md的说明启动
+asr_mode = funasr
+#ASR二选一（需要运行fay/test/funasr服务）集成达摩院asr项目、感谢中科大脑算法工程师张聪聪提供集成代码
+local_asr_ip=127.0.0.1
+local_asr_port=10197
+
+# ASR二选一（第1次运行建议用这个，免费3个月）， 阿里云 实时语音识别 服务密钥（必须）https://ai.aliyun.com/nls/trans
+ali_nls_key_id=
+ali_nls_key_secret=
+ali_nls_app_key=
+
+
+
+#tts类型（切换请重新选择所需要的声音）azure、ali、gptsovits、volcano、gptsovits_v3
+tts_module=ms
+
+# 微软 文字转语音 服务密钥（非必须，使用可产生不同情绪的音频）https://azure.microsoft.com/zh-cn/services/cognitive-services/text-to-speech/
+ms_tts_key=
+ms_tts_region=
+
+# 阿里云 文字转语音 服务密钥 https://ai.aliyun.com/nls/trans
+ali_tss_key_id=
+ali_tss_key_secret=
+ali_tss_app_key=
+
+# Doubao-语音合成 服务密钥 https://www.volcengine.com/product/voice-tech
+volcano_tts_appid=
+volcano_tts_access_token=
+volcano_tts_cluster=volcano_tts
+#可为空，为空时读取选择的音色
+volcano_tts_voice_type=
+
+#key
+#小模型（日常对话/工具编排使用）api key
+gpt_api_key=
+#小模型 base url 如：https://api.openai.com/v1、https://rwkv.ai-creator.net/chntuned/v1、https://api.fastgpt.in/api/v1、https://api.moonshot.cn/v1
+gpt_base_url=https://ws-iiivbr3k1q1tutoc.cn-beijing.maas.aliyuncs.com/compatible-mode/v1
+#小模型 model engine 如：glm4、deepseek、qwen3-4b等
+gpt_model_engine=qwen3.8-flash
+
+#大模型（复杂推理/核实场景使用，未配置时降级为小模型）
+#大模型 model engine 如：MiniMax-M2.7、gpt-4o、deepseek-r1等
+big_model_engine=
+#大模型 base url（留空则复用小模型的 gpt_base_url）
+big_model_base_url=
+#大模型 api key（留空则复用小模型的 gpt_api_key）
+big_model_api_key=
+
+# Embedding 模型配置
+# Embedding 模型名称，如 text-embedding-qwen3-embedding-0.6b、BAAI/bge-large-zh-v1.5
+embedding_api_model=qwen3.7-text-embedding
+# Embedding 服务 base url（可单独配置；留空则复用小模型的 gpt_base_url，key 始终复用 gpt_api_key）
+embedding_base_url=
+
+#gpt(fastgpt)代理(可为空，填写例子：127.0.0.1:7890)
+proxy_config=
+
+#启动模式common、web（服务器或docker请使用web方式，通过http://127.0.0.1:5000控制）
+start_mode=web
+
+#服务器主动地址
+fay_url=http://127.0.0.1:5000

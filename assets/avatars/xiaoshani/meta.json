@@ -1,0 +1,31 @@
+{
+  "id": "xiaoshani",
+  "name": "小沙弥",
+  "tagline": "活泼的小沙弥，适合带孩子一起",
+  "scenic": "lingshan",
+  "voice_hint": "清亮、略带童声的男声",
+  "placeholder": true,
+  "generated_at": "2026-09-25 21:23:54",
+  "model": "wan2.2-t2i-flash",
+  "size": "1024*1024",
+  "prompt": "一位十岁左右的圆脸小和尚，光头，神情好奇又开心，露齿笑，穿灰白色对襟僧衣，戴一串木质念珠，体态小巧，气质干净憨厚，像个爱问问题的小朋友，正面半身像，面朝镜头，面部位于画面中央偏上，肩膀入画，纯色渐变背景，柔和均匀的光线，画面干净，中国古风动漫插画风格，线条清晰，色彩雅致，不要文字，不要水印，不要多人，不要侧脸，不要夸张表情",
+  "source_url": "https://dashscope-5859.oss-cn-wulanchabu-acdr-1.aliyuncs.com/1d/7f/20260925/6514ac22/0973352d-4064-48f4-940e-f5ce767e7a90908902359.png?Expires=1790429029&OSSAccessKeyId=LTAI5tPxpiCM2hjmWrFXrym1&Signature=aVP75NJTjUMfw1ewXXHlgzP3pWM%3D",
+  "anchors": {
+    "face": {
+      "x": 0.528,
+      "y": 0.422
+    },
+    "mouth": {
+      "x": 0.528,
+      "y": 0.482
+    },
+    "eyes": {
+      "x": 0.528,
+      "y": 0.392,
+      "gap": 0.1
+    },
+    "face_height": 0.57
+  },
+  "render_hint": "占位阶段：立绘 + 程序化嘴型（按包络画椭圆），不需要分层素材",
+  "anchors_calibrated_at": "2026-09-25 22:21:18"
+}

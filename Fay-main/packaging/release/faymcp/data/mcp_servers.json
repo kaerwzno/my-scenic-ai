@@ -1,0 +1,64 @@
+[
+    {
+        "id": 1,
+        "name": "tools",
+        "ip": "",
+        "connection_time": "",
+        "key": "",
+        "transport": "stdio",
+        "command": "fay.exe",
+        "args": [
+            "--mcp-stdio-runner",
+            "test/mcp_stdio_example.py"
+        ],
+        "cwd": "",
+        "env": {}
+    },
+    {
+        "id": 2,
+        "name": "Fay日程管理",
+        "ip": "",
+        "connection_time": "",
+        "key": "",
+        "transport": "stdio",
+        "command": "fay.exe",
+        "args": [
+            "--mcp-stdio-runner",
+            "server.py"
+        ],
+        "cwd": "mcp_servers/schedule_manager",
+        "env": {}
+    },
+    {
+        "id": 5,
+        "name": "window capture",
+        "ip": "",
+        "connection_time": "",
+        "key": "",
+        "transport": "stdio",
+        "command": "fay.exe",
+        "args": [
+            "--mcp-stdio-runner",
+            "mcp_servers/window_capture/server.py"
+        ],
+        "cwd": "",
+        "env": {}
+    },
+    {
+        "id": 6,
+        "name": "课程知识库",
+        "ip": "",
+        "connection_time": "",
+        "key": "",
+        "transport": "stdio",
+        "command": "fay.exe",
+        "args": [
+            "--mcp-stdio-runner",
+            "mcp_servers/fay_player_knowledge/fay_player_knowledge_base_mcp_server.py",
+            "--source",
+            "./fay_player_knowledge"
+        ],
+        "cwd": "",
+        "env": {}
+    }
+]

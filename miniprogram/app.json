@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/avatar/index",
+    "pages/chat/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#4E327D",
+    "navigationBarTitleText": "灵山 AI 导游",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,192 @@
+{
+  "_说明": "数字人形象池。生成的字段由 scripts/build_avatars_config.py 刷新，voice / enabled / order 是人工字段，重新生成时会保留。",
+  "_生成时间": "2026-09-25 21:27:14",
+  "default_avatar": "lingling",
+  "avatars": {
+    "kaka": {
+      "name": "卡卡",
+      "tagline": "Q 版卡通小伙伴，适合孩子和想安静的人",
+      "scenic": "lingshan",
+      "placeholder": true,
+      "render": {
+        "type": "static_procedural_mouth",
+        "base": "kaka/base.png",
+        "anchors": {
+          "face": {
+            "x": 0.536,
+            "y": 0.326
+          },
+          "mouth": {
+            "x": 0.536,
+            "y": 0.386
+          },
+          "eyes": {
+            "x": 0.536,
+            "y": 0.29600000000000004,
+            "gap": 0.1
+          },
+          "face_height": 0.34
+        },
+        "note": "占位阶段：立绘 + 程序化嘴型，不需要分层素材"
+      },
+      "style": "Q 版卡通风格，二头身大头娃娃比例，圆润的造型，简洁的五官，柔和的马卡龙配色，粗描边，扁平化上色",
+      "generated_at": "2026-09-25 21:26:20",
+      "voice": {
+        "model": "qwen3-tts-flash",
+        "voice_id": "",
+        "speed": 1.0,
+        "hint": "软糯、语速慢的童声"
+      },
+      "enabled": true,
+      "order": 5
+    },
+    "lingling": {
+      "name": "灵灵",
+      "tagline": "温柔的景区小导游",
+      "scenic": "lingshan",
+      "placeholder": true,
+      "render": {
+        "type": "static_procedural_mouth",
+        "base": "lingling/base.png",
+        "anchors": {
+          "face": {
+            "x": 0.516,
+            "y": 0.382
+          },
+          "mouth": {
+            "x": 0.516,
+            "y": 0.442
+          },
+          "eyes": {
+            "x": 0.516,
+            "y": 0.352,
+            "gap": 0.1
+          },
+          "face_height": 0.265
+        },
+        "note": "占位阶段：立绘 + 程序化嘴型，不需要分层素材"
+      },
+      "style": "",
+      "generated_at": "2026-09-25 21:21:09",
+      "voice": {
+        "model": "qwen3-tts-flash",
+        "voice_id": "",
+        "speed": 1.0,
+        "hint": "轻柔、语速偏慢的女声"
+      },
+      "enabled": true,
+      "order": 1
+    },
+    "lingxi": {
+      "name": "灵犀",
+      "tagline": "元气满满的二次元少女，活泼爱聊",
+      "scenic": "lingshan",
+      "placeholder": true,
+      "render": {
+        "type": "static_procedural_mouth",
+        "base": "lingxi/base.png",
+        "anchors": {
+          "face": {
+            "x": 0.54,
+            "y": 0.49000000000000005
+          },
+          "mouth": {
+            "x": 0.54,
+            "y": 0.55
+          },
+          "eyes": {
+            "x": 0.54,
+            "y": 0.4600000000000001,
+            "gap": 0.1
+          },
+          "face_height": 0.52
+        },
+        "note": "占位阶段：立绘 + 程序化嘴型，不需要分层素材"
+      },
+      "style": "日系二次元动漫风格，赛璐璐平涂上色，大而明亮的眼睛，干净利落的高光线，色彩明快鲜亮",
+      "generated_at": "2026-09-25 21:26:09",
+      "voice": {
+        "model": "qwen3-tts-flash",
+        "voice_id": "",
+        "speed": 1.0,
+        "hint": "明亮、语速偏快的少女音"
+      },
+      "enabled": true,
+      "order": 4
+    },
+    "xiaoshani": {
+      "name": "小沙弥",
+      "tagline": "活泼的小沙弥，适合带孩子一起",
+      "scenic": "lingshan",
+      "placeholder": true,
+      "render": {
+        "type": "static_procedural_mouth",
+        "base": "xiaoshani/base.png",
+        "anchors": {
+          "face": {
+            "x": 0.528,
+            "y": 0.422
+          },
+          "mouth": {
+            "x": 0.528,
+            "y": 0.482
+          },
+          "eyes": {
+            "x": 0.528,
+            "y": 0.392,
+            "gap": 0.1
+          },
+          "face_height": 0.57
+        },
+        "note": "占位阶段：立绘 + 程序化嘴型，不需要分层素材"
+      },
+      "style": "",
+      "generated_at": "2026-09-25 21:23:54",
+      "voice": {
+        "model": "qwen3-tts-flash",
+        "voice_id": "",
+        "speed": 1.0,
+        "hint": "清亮、略带童声的男声"
+      },
+      "enabled": true,
+      "order": 2
+    },
+    "zhiyuan": {
+      "name": "智远",
+      "tagline": "儒雅的讲解员，讲得深、讲得慢",
+      "scenic": "lingshan",
+      "placeholder": true,
+      "render": {
+        "type": "static_procedural_mouth",
+        "base": "zhiyuan/base.png",
+        "anchors": {
+          "face": {
+            "x": 0.496,
+            "y": 0.34600000000000003
+          },
+          "mouth": {
+            "x": 0.496,
+            "y": 0.406
+          },
+          "eyes": {
+            "x": 0.496,
+            "y": 0.31600000000000006,
+            "gap": 0.1
+          },
+          "face_height": 0.33
+        },
+        "note": "占位阶段：立绘 + 程序化嘴型，不需要分层素材"
+      },
+      "style": "",
+      "generated_at": "2026-09-25 21:23:37",
+      "voice": {
+        "model": "qwen3-tts-flash",
+        "voice_id": "",
+        "speed": 1.0,
+        "hint": "沉稳的中年男声"
+      },
+      "enabled": true,
+      "order": 3
+    }
+  }
+}

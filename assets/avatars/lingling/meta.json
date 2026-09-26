@@ -1,0 +1,31 @@
+{
+  "id": "lingling",
+  "name": "灵灵",
+  "tagline": "温柔的景区小导游",
+  "scenic": "lingshan",
+  "voice_hint": "轻柔、语速偏慢的女声",
+  "placeholder": true,
+  "generated_at": "2026-09-25 21:21:09",
+  "model": "wan2.2-t2i-flash",
+  "size": "1024*1024",
+  "prompt": "一位二十出头的中国女性导游，神情温柔亲切，嘴角带浅浅微笑，乌黑长发挽成简洁发髻，插一支素雅木簪，穿淡青色交领襦裙，外披浅米色纱质大袖衫，领口简净无繁复刺绣，气质沉静温和，像一位耐心的陪伴者，正面半身像，面朝镜头，面部位于画面中央偏上，肩膀入画，纯色渐变背景，柔和均匀的光线，画面干净，中国古风动漫插画风格，线条清晰，色彩雅致，不要文字，不要水印，不要多人，不要侧脸，不要夸张表情",
+  "source_url": "https://dashscope-5859.oss-cn-wulanchabu-acdr-1.aliyuncs.com/1d/50/20260925/6514ac22/342a50d5-c532-4c03-98f5-d042ffe936662427899886.png?Expires=1790428865&OSSAccessKeyId=LTAI5tPxpiCM2hjmWrFXrym1&Signature=yUP14Fsn4qfh7OCmrVkB889%2BuI0%3D",
+  "anchors": {
+    "face": {
+      "x": 0.516,
+      "y": 0.382
+    },
+    "mouth": {
+      "x": 0.516,
+      "y": 0.442
+    },
+    "eyes": {
+      "x": 0.516,
+      "y": 0.352,
+      "gap": 0.1
+    },
+    "face_height": 0.265
+  },
+  "render_hint": "占位阶段：立绘 + 程序化嘴型（按包络画椭圆），不需要分层素材",
+  "anchors_calibrated_at": "2026-09-25 22:20:50"
+}

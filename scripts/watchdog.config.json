@@ -1,0 +1,49 @@
+{
+  "_说明": "时间看门狗配置。改这里不用改代码。",
+
+  "fay_base": "http://127.0.0.1:5000",
+  "username": "User",
+
+  "_轮询间隔说明": "每隔多少秒观察一次真实状态",
+  "poll_interval_sec": 30,
+
+  "_全局冷却说明": "主动说完一句后，多少秒内不再主动（防打扰）",
+  "global_cooldown_sec": 300,
+
+  "_安静期说明": "用户刚说过话时，B/C 类规则先不打扰（D 类不受此限）",
+  "quiet_after_user_sec": 60,
+
+  "_会话边界说明": "超过这么久没说话，就认为是新的一次游览（用于推算'入园时长'）",
+  "session_gap_hours": 2,
+
+  "_闭园时间说明": "24 小时制，用于 C 规则",
+  "park_close_time": "19:30",
+
+  "rules": {
+    "B_long_stay": {
+      "_含义": "已在景区游览超过 N 分钟 → 主动关心",
+      "_优先级": "数值越大越先说。B=20 < D=60 < C=100（快闭园最紧急）",
+      "enabled": true,
+      "after_minutes": 30,
+      "cooldown_sec": 1800,
+      "priority": 20
+    },
+    "C_closing_soon": {
+      "_含义": "距闭园不足 N 分钟 → 主动提醒",
+      "_优先级": "100 = 最紧急，会压过 B 和 D",
+      "enabled": true,
+      "before_minutes": 30,
+      "cooldown_sec": 3600,
+      "priority": 100
+    },
+    "D_short_replies": {
+      "_含义": "用户最近 N 次回复都很短 → 主动关心（可能累了/不想说话）",
+      "_优先级": "60 = 中等。用户刚说完话的时效性强于'逛久了'",
+      "enabled": true,
+      "max_chars": 4,
+      "count": 2,
+      "cooldown_sec": 900,
+      "priority": 60
+    }
+  }
+}

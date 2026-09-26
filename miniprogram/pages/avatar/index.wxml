@@ -1,0 +1,30 @@
+<view class="page">
+  <view class="head">
+    <view class="title">选一个陪你的导游</view>
+    <view class="muted">选定之后它会一直陪你。以后换了形象，之前聊过的它都记得。</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="muted center">正在加载…</view>
+  <view wx:elif="{{error}}" class="err center">{{error}}</view>
+
+  <view class="grid">
+    <view
+      wx:for="{{avatars}}"
+      wx:key="id"
+      class="card {{item.id === picked ? 'on' : ''}}"
+      data-id="{{item.id}}"
+      bindtap="onPick">
+      <image class="portrait" src="{{base + item.portrait_url}}" mode="aspectFill"></image>
+      <view class="name">{{item.name}}</view>
+      <view class="tagline">{{item.tagline}}</view>
+      <view wx:if="{{item.id === picked}}" class="badge">已选</view>
+    </view>
+  </view>
+
+  <view class="foot">
+    <view class="btn-primary {{picked ? '' : 'disabled'}}" bindtap="onConfirm">
+      {{picked ? '就选 TA，开始聊天' : '先选一个'}}
+    </view>
+    <view class="muted center mt">当前用户：{{userId}}</view>
+  </view>
+</view>

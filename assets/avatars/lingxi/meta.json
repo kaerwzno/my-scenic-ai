@@ -1,0 +1,32 @@
+{
+  "id": "lingxi",
+  "name": "灵犀",
+  "tagline": "元气满满的二次元少女，活泼爱聊",
+  "scenic": "lingshan",
+  "voice_hint": "明亮、语速偏快的少女音",
+  "placeholder": true,
+  "generated_at": "2026-09-25 21:26:09",
+  "model": "wan2.2-t2i-flash",
+  "size": "1024*1024",
+  "prompt": "一位十六七岁的二次元少女，元气活泼，眼睛又大又亮，笑得灿烂，浅栗色头发扎成双马尾，额前有碎刘海，戴一个小巧的莲花发饰，穿白底青绿滚边的改良导游制服，领口系一条短丝巾，整体明快清爽，像个爱说话的邻家女孩，日系二次元动漫风格，赛璐璐平涂上色，大而明亮的眼睛，干净利落的高光线，色彩明快鲜亮，正面半身像，面朝镜头，面部位于画面中央偏上，肩膀入画，纯色渐变背景，柔和均匀的光线，画面干净，不要文字，不要水印，不要多人，不要侧脸，不要夸张表情",
+  "source_url": "https://dashscope-5859.oss-cn-wulanchabu-acdr-1.aliyuncs.com/1d/d8/20260925/6514ac22/4a2a8b02-ec57-44bd-9977-6b1ccf5c11b63693354139.png?Expires=1790429163&OSSAccessKeyId=LTAI5tPxpiCM2hjmWrFXrym1&Signature=K0MU9pD2eljNXOHWa7elifeJtIE%3D",
+  "anchors": {
+    "face": {
+      "x": 0.54,
+      "y": 0.49000000000000005
+    },
+    "mouth": {
+      "x": 0.54,
+      "y": 0.55
+    },
+    "eyes": {
+      "x": 0.54,
+      "y": 0.4600000000000001,
+      "gap": 0.1
+    },
+    "face_height": 0.52
+  },
+  "style": "日系二次元动漫风格，赛璐璐平涂上色，大而明亮的眼睛，干净利落的高光线，色彩明快鲜亮",
+  "render_hint": "占位阶段：立绘 + 程序化嘴型（按包络画椭圆），不需要分层素材",
+  "anchors_calibrated_at": "2026-09-25 22:46:39"
+}

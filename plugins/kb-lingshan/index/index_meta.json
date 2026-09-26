@@ -1,0 +1,9 @@
+{
+  "collection": "kb_lingshan",
+  "chunk_count": 130,
+  "dim": 512,
+  "corpus_version": "18b3a6ad0fa05ce7",
+  "embedding_model": "BAAI--bge-small-zh-v1.5",
+  "built_at": "2026-09-25 19:57:12",
+  "protected_count": 9
+}
