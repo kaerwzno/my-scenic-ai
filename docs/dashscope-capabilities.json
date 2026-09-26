@@ -1,0 +1,136 @@
+{
+  "probed_at": "2026-09-25 21:40:29",
+  "base": "https://dashscope.aliyuncs.com",
+  "results": [
+    {
+      "verdict": "可用",
+      "http": 200,
+      "detail": "已受理 task=16b5fd41-a970-4cb3-855b-c5805d7e33db",
+      "category": "视频生成",
+      "model": "wan2.2-i2v-flash",
+      "desc": "图生视频：一张图 + 提示词 → 短视频",
+      "path": "/api/v1/services/aigc/video-generation/video-synthesis",
+      "async": true
+    },
+    {
+      "verdict": "可用",
+      "http": 200,
+      "detail": "已受理 task=3adcc915-0670-4aaf-ba09-b1cc4bac8a1d",
+      "category": "视频生成",
+      "model": "wan2.2-i2v-plus",
+      "desc": "图生视频（高质）",
+      "path": "/api/v1/services/aigc/video-generation/video-synthesis",
+      "async": true
+    },
+    {
+      "verdict": "可用",
+      "http": 200,
+      "detail": "已受理 task=c91391ed-e48a-4207-81cd-6bef8ecba462",
+      "category": "视频生成",
+      "model": "wanx2.1-i2v-turbo",
+      "desc": "图生视频（上一代）",
+      "path": "/api/v1/services/aigc/video-generation/video-synthesis",
+      "async": true
+    },
+    {
+      "verdict": "可用",
+      "http": 200,
+      "detail": "已受理 task=769529ba-3687-4161-8b53-34920a34fc19",
+      "category": "数字人对口型",
+      "model": "videoretalk",
+      "desc": "视频对口型：给一段视频重配口型",
+      "path": "/api/v1/services/aigc/image2video/video-synthesis",
+      "async": true
+    },
+    {
+      "verdict": "可用",
+      "http": 400,
+      "detail": "InvalidParameter image_url should not be null",
+      "category": "数字人对口型",
+      "model": "emo-v1",
+      "desc": "音频驱动说话脸（EMO）",
+      "path": "/api/v1/services/aigc/image2video/video-synthesis",
+      "async": true
+    },
+    {
+      "verdict": "不可用",
+      "http": 400,
+      "detail": "InvalidParameter url error, please check url！ For details, see: https://help.aliyun.com/zh/model-studio/error-code#error-url",
+      "category": "数字人对口型",
+      "model": "liveportrait",
+      "desc": "人像动态化（LivePortrait）",
+      "path": "/api/v1/services/aigc/image2video/face-chain",
+      "async": true
+    },
+    {
+      "verdict": "可用",
+      "http": 400,
+      "detail": "InvalidParameter image_url should not be null",
+      "category": "数字人对口型",
+      "model": "liveportrait",
+      "desc": "人像动态化（换路径再试一次）",
+      "path": "/api/v1/services/aigc/image2video/video-synthesis",
+      "async": true
+    },
+    {
+      "verdict": "可用",
+      "http": 400,
+      "detail": "InvalidParameter The voice property is required.",
+      "category": "语音合成",
+      "model": "qwen3-tts-flash",
+      "desc": "语音合成（同步）",
+      "path": "/api/v1/services/aigc/multimodal-generation/generation",
+      "async": false
+    },
+    {
+      "verdict": "可用",
+      "http": 400,
+      "detail": "InvalidParameter <400> InternalError.Algo.InvalidParameter: The dedicated task `asr` corresponding to the current service does not support this input.",
+      "category": "语音识别",
+      "model": "qwen3-asr-flash",
+      "desc": "语音识别（同步）",
+      "path": "/api/v1/services/aigc/multimodal-generation/generation",
+      "async": false
+    },
+    {
+      "verdict": "可用",
+      "http": 400,
+      "detail": "InvalidParameter <400> InternalError.Algo.InvalidParameter: Field required: input.text",
+      "category": "语音合成",
+      "model": "qwen3-tts-instruct-flash",
+      "desc": "语音合成 · 可指定语气（同步）",
+      "path": "/api/v1/services/aigc/multimodal-generation/generation",
+      "async": false
+    },
+    {
+      "verdict": "可用",
+      "http": 400,
+      "detail": "InvalidParameter The voice property is required.",
+      "category": "语音合成",
+      "model": "qwen3-tts-flash",
+      "desc": "语音合成（重复项，保留作对照）",
+      "path": "/api/v1/services/aigc/multimodal-generation/generation",
+      "async": false
+    },
+    {
+      "verdict": "可用",
+      "http": 400,
+      "detail": "InvalidParameter <400> InternalError.Algo.InvalidParameter: The dedicated task `asr` corresponding to the current service does not support this input.",
+      "category": "语音识别",
+      "model": "qwen3-asr-flash",
+      "desc": "语音识别（重复项，保留作对照）",
+      "path": "/api/v1/services/aigc/multimodal-generation/generation",
+      "async": false
+    },
+    {
+      "verdict": "可用",
+      "http": 200,
+      "detail": "已受理 task=deb0b9f6-c805-4c1b-b0fe-0aa2b769f6e4",
+      "category": "图像生成",
+      "model": "wan2.2-t2i-flash",
+      "desc": "对照组：这个已经验证可用",
+      "path": "/api/v1/services/aigc/text2image/image-synthesis",
+      "async": true
+    }
+  ]
+}

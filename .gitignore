@@ -1,0 +1,92 @@
+# ─────────────────────────────────────────────────────────────
+# 这个仓库约 8.5 GB，其中绝大部分是「能重新生成的东西」。
+# 下面这些一定要排除，否则 GitHub 推不上去（单文件 >100MB 会被拒，
+# 仓库 >1GB 会被警告）。
+# ─────────────────────────────────────────────────────────────
+
+# 前端（Next.js）
+node_modules/
+.next/
+out/
+dist/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
+# Python（Fay 用 uv 建的虚拟环境）
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# 每次运行都会变的数据 / 缓存
+logs/
+*.log
+cache_data/
+
+# ── Fay 的运行时会话数据 ─────────────────────────────────────
+# 这里面是**真实对话记忆**（fay.db、memory_stream/embeddings.json 有 6.9MB），
+# 属于运行时数据、也含个人对话内容，不该进公开仓库。
+# 想给别人看"记忆能力"的话，用 docs 里的实验记录说明就够了。
+Fay-main/memory/
+Fay-main/cache_data/
+Fay-main/logs/
+Fay-main/faymcp/data/mcp_resource_states.json
+
+# Fay 注册 MCP 插件时的绝对路径缓存（换台机器就失效，由程序自己重建）
+Fay-main/faymcp/data/mcp_stdio_python.EXE.log
+
+# Chroma / 向量库的持久化目录（索引可以重新构建）
+**/chroma_db/
+**/chroma/_db/
+**/.chroma/
+
+# 环境变量（**里面有 API Key，绝对不能提交**）
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Fay 的配置文件里存着百炼 API Key（gpt_api_key=sk-ws-...），
+# 真配置不进仓库；模板是 Fay-main/system.conf.example。
+Fay-main/system.conf
+Fay-main/system.conf.txt
+Fay-main/system.conf.bak
+
+# 系统的垃圾文件
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+*.swp
+*.tmp
+
+# 编辑器 / IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# 旧的、被替换掉的实验项目 —— 不纳入仓库
+# （想留着的话就在下面注释掉某一行，或者只留本地）
+灵山AI导游系统/
+mate-human-main/
+
+# 我做的备份目录（体积不大，但没必要进仓库）
+_backup/
+
+# 依赖锁文件的重复副本：项目用 npm，bun.lock 是历史遗留
+AI-guide-main/bun.lock
+
+# Fay 的测试资源（其中带 78MB 的 ffmpeg.exe 等）
+Fay-main/test/
+
+# Python 构建产物
+*.spec
+
+# 大体积临时文件
+*.zip
+*.7z

@@ -1,0 +1,16 @@
+{
+  "line": "你好呀，我是灵灵，欢迎来到灵山胜境。这边请跟我走。",
+  "audio_url": "http://dashscope-result-bj.oss-cn-beijing.aliyuncs.com/prod/qwen3-tts/20260925/1305874334449908/d36468d0-76af-92c5-a789-16735a1ef889.wav?Expires=1790431109&OSSAccessKeyId=LTAI5tGzqbGcEmE58b221XQy&Signature=EakT4Ts18dBou7B3dw4NxkushpA%3D",
+  "results": [
+    {
+      "id": "lingling",
+      "name": "灵灵",
+      "at": "2026-09-25 21:58:31",
+      "image_ref_kind": "oss",
+      "bbox": [],
+      "detect_path": "HTTP 400 InvalidParameter url error, please check url！ For details, see: https://help.aliyun.com/zh/model-studio/error-code#error-url",
+      "verdict": "检测不到人脸",
+      "error": "该风格不被支持：HTTP 400 InvalidParameter url error, please check url！ For details, see: https://help.aliyun.com/zh/model-studio/error-code#error-url"
+    }
+  ]
+}
